@@ -11,7 +11,7 @@ int main() {
     printf("Nhap ma so sinh vien (MSSV): ");
     scanf("%s", mssv);
     
-    while (getchar() != '\n'); 
+    // while (getchar() != '\n'); 
 
     printf("Nhap Ho va Ten: ");
     fgets(hoTen, sizeof(hoTen), stdin);

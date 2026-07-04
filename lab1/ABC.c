@@ -1,14 +1,18 @@
 #include <stdio.h>
+int main()
+{
+    int A;
+    printf("Nhap gia tri A: ");
+    scanf("%d", &A);
 
-int main() {
-    int a = 5;
-    int b = 7;
-    float nghiemX;
+    int B;
+    printf("Nhap gia tri B: ");
+    scanf("%d", &B);
 
-    // Tính nghiệm (ép kiểu sang float để ra kết quả chính xác -1.4)
-    nghiemX = (float)-b / a; 
-
-    // Xuất câu thông báo ra màn hình
-    printf("Phuong trinh %dx + %d = 0 co nghiem x = %.1f", a, b, nghiemX);
-
+    int Dientich = A * B;
+    printf("Dien tich hinh chu nhat la: %d\n", Dientich);
+    int Chuvi = (A + B) * 2;
+    printf("Chu vi hinh chu nhat la: %d\n", Chuvi);
+    
     return 0;
+}
