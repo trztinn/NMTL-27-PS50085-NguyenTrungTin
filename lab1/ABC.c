@@ -56,12 +56,12 @@ int main() {
         n--;
         continue;
     }
-    n /= 2;  
+    n /= 2;  //| 9 0 | 4 9 | 3 9 | 1 12 | 0 13 |
     }
     printf("%d", sum);
 
     return 0;
 }
     // git add .
-    // git commit -m "🔥 Highlight"
+    // git commit -m "🔥 Highlight "
     // git push origin main
