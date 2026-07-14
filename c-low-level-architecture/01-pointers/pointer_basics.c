@@ -17,12 +17,12 @@ int main() {
     swap(&a, &b);
     printf("Sau khi hoan doi: a = %d, b = %d\n", a, b);
     printf("-----------------------------------\n");
+
     int score = 90;
     int *p = &score; 
     printf("Gia tri cua bien score: %d\n", score);  
     printf("Dia chi cua bien score trong bo nho: %p\n", &score);
     *p = 95;
-    
     printf("Gia tri cua bien score: %d\n", score);  
     printf("Dia chi cua bien score trong bo nho: %p\n", (void*)p);
     return 0;
