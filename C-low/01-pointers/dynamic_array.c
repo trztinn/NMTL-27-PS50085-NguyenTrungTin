@@ -65,5 +65,68 @@ int main() {
     free(diem); 
     diem = NULL; // Xóa con trỏ rác để tránh lỗi bảo mật
 
+
+  
     return 0;
 }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// // Hàm nhập mảng và trả về con trỏ vùng nhớ đã cấp phát
+// int* nhapMang(int *size) {
+//     printf("Nhap so nguyen: ");
+//     if (scanf("%d", size) != 1 || *size <= 0) {
+//         printf("Kich thuoc mang khong hop le!\n");
+//         return NULL;
+//     }
+
+//     // Không cần ép kiểu (int*) trong C
+//     int *arr = malloc(*size * sizeof(int)); 
+//     if (arr == NULL) {
+//         printf("Cap phat bo nho that bai!\n");
+//         return NULL;
+//     }
+
+//     for (int i = 0; i < *size; i++) {
+//         printf("Nhap phan tu thu %d: ", i + 1);
+//         scanf("%d", &arr[i]);
+//     }
+//     return arr;
+// }
+
+// // Hàm tính tổng các phần tử trong mảng
+// int tinhTong(int *arr, int size) {
+//     int sum = 0;
+//     for (int i = 0; i < size; i++) {
+//         sum += arr[i];
+//     }
+//     return sum;
+// }
+
+// int main() {
+//     int n1, n2;
+    
+//     // Nhập mảng 1
+//     int *arr1 = nhapMang(&n1);
+//     if (arr1 == NULL) return 1;
+
+//     // Nhập mảng 2
+//     int *arr2 = nhapMang(&n2);
+//     if (arr2 == NULL) {
+//         free(arr1); // Giải phóng mảng 1 nếu mảng 2 thất bại
+//         return 1;
+//     }
+
+//     // Tính tổng và in kết quả
+//     int tong1 = tinhTong(arr1, n1);
+//     int tong2 = tinhTong(arr2, n2);
+    
+//     printf("Tong cua hai mang la: %d\n", tong1 + tong2);
+
+//     // Dọn dẹp bộ nhớ
+//     free(arr1);
+//     free(arr2);
+
+//     return 0;
+// }
