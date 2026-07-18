@@ -9,7 +9,7 @@ int main() {
     
     do {
         printf("\n=====================================\n");
-        printf("        MENU CHUONG TRINH LAB 3      \n");
+        printf("         MENU CHUONG TRINH LAB 3      \n");
         printf("=====================================\n");
         printf("1. Chức năng học lực sinh viên\n");
         printf("2. Chức năng giải phương trình bậc 2\n");
@@ -19,10 +19,11 @@ int main() {
         
         printf("Nhap lua chon cua ban (1-4): ");
         scanf("%d", &choice);
+        while (getchar() != '\n'); 
         printf("\n"); 
         
         switch (choice) {
-            case 1: { 
+            case 1:{ 
                 printf("--- Chức năng học lực sinh viên ---\n");
                 printf("Nhập vào điểm của sinh viên: "); 
                 float diem;
@@ -92,11 +93,53 @@ int main() {
                 break;
             }
             
-            case 3:
+            case 3:{
                 printf("--- Chức năng tính tiền điện tiêu thụ hàng tháng ---\n");
-                // Viết code tính tiền điện của bạn ở đây
+                int kwh;
+                printf("Nhap so kWh tieu thu: ");
+                scanf("%d", &kwh);          
+                if (kwh <= 0)
+                {
+                    printf("Không hợp lệ\n"); 
+                    break;  
+                }
+                else    
+                {
+                    if (kwh <= 50)
+                    {
+                        long long money = 1678 * kwh;
+                        printf("Tiền điện: %lld đồng\n", money);
+                    }
+                    else if (kwh <= 100)
+                    {
+                        long long money = 1678 * 50 + (kwh - 50) * 1734;
+                        printf("Tiền điện: %lld đồng\n", money);
+                    }
+                    else if (kwh <= 200)
+                    {
+                        long long money = 1678 * 50 + 1734 * 50 + (kwh - 100) * 2014;
+                        printf("Tiền điện: %lld đồng\n", money);
+                    }
+                    else if (kwh <= 300)
+                    {
+                        long long money = 1678 * 50 + 1734 * 50 + 2014 * 100 + (kwh - 200) * 2536;
+                        printf("Tiền điện: %lld đồng\n", money);
+                    }
+                    else if (kwh <= 400)
+                    {
+                        long long money = 1678 * 50 + 1734 * 50 + 2014 * 100 + 2536 * 100 + (kwh - 300) * 2834;
+                        printf("Tiền điện: %lld đồng\n", money);
+                    }
+                    else
+                    {
+                        long long money = 1678 * 50 + 1734 * 50 + 2014 * 100 + 2536 * 100 + 2834 * 100 + (kwh - 400) * 2927;
+                        printf("Tiền điện: %lld đồng\n", money);
+                    }
+                    printf(" ");
+                } 
                 break;
-                
+            }
+            
             case 4:
                 printf("Cảm ơn bạn đã sử dụng chương trình. Thoát hẳn!\n");
                 break;
@@ -105,7 +148,7 @@ int main() {
                 printf("Lựa chọn không hợp lệ! Vui lòng chọn lại từ 1 đến 4.\n");
         }
         
-    } while (choice != 4 ); // Vòng lặp sẽ tiếp tục nếu người dùng KHÔNG chọn số 4
+    } while (choice != 4 ); 
     
     return 0;
 }

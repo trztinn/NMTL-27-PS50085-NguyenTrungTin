@@ -12,7 +12,7 @@ int main() {
 
     float chuViHCN = (chieuDai + chieuRong) * 2;
     float dienTichHCN = chieuDai * chieuRong;
-
+    
     printf("Chu vi Hinh Chu Nhat: %.2f\n", chuViHCN);
     printf("Dien tich Hinh Chu Nhat: %.2f\n\n", dienTichHCN);
 

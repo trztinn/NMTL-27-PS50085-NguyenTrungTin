@@ -62,6 +62,3 @@ int main() {
 
     return 0;
 }
-    // git add .
-    // git commit -m "🔥 Highlight "
-    // git push origin main
