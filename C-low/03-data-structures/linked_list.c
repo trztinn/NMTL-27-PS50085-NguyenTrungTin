@@ -29,6 +29,17 @@ void insertAtHead(struct Node** head_ref, int value) {
     // Cập nhật lại Head chính là Node mới
     *head_ref = newNode;
 }
+void xoa(struct Node** head)    
+{
+    if (*head == NULL)
+    {
+        printf("Rong! \n");
+        return;
+    }
+    struct Node* temp = *head;
+    *head = (*head)->next;
+    free(temp);
+};
 
 // 4. HÀM IN DANH SÁCH (Duyệt qua từng Node)
 void printList(struct Node* node) {
@@ -59,7 +70,8 @@ int main() {
     insertAtHead(&head, 10);
     insertAtHead(&head, 20);
     insertAtHead(&head, 30);
-
+    insertAtHead(&head, 5);
+    xoa(&head);
     // In kết quả ra màn hình (Sẽ in ngược lại vì chèn vào đầu: 30 -> 20 -> 10)
     printList(head);
 
