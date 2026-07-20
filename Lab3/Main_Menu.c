@@ -18,8 +18,11 @@ int main() {
         printf("-------------------------------------\n");
         
         printf("Nhap lua chon cua ban (1-4): ");
-        scanf("%d", &choice);
-        while (getchar() != '\n'); 
+        if (scanf("%d", &choice) != 1 )
+        {
+            choice = 100;
+        }
+        while (getchar() != '\n');
         printf("\n"); 
         
         switch (choice) {
@@ -27,12 +30,11 @@ int main() {
                 printf("--- Chức năng học lực sinh viên ---\n");
                 printf("Nhập vào điểm của sinh viên: "); 
                 float diem;
-                while (scanf("%f", &diem) !=1  || diem > 10)
+                while (scanf("%f", &diem) != 1 || diem < 0 || diem > 10)
                 {
                     while (getchar() != '\n');
                     printf("Không hợp lệ! \n"); 
-                    printf("Nhap lại: \n");
-
+                    printf("Nhập lại: ");
                 }
                 
                     if (diem >= 9) {
