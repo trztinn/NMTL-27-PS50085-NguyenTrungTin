@@ -27,12 +27,14 @@ int main() {
                 printf("--- Chức năng học lực sinh viên ---\n");
                 printf("Nhập vào điểm của sinh viên: "); 
                 float diem;
-                scanf("%f", &diem);
+                while (scanf("%f", &diem) !=1  || diem > 10)
+                {
+                    while (getchar() != '\n');
+                    printf("Không hợp lệ! \n"); 
+                    printf("Nhap lại: \n");
+
+                }
                 
-                if (diem < 0 || diem > 10) {
-                    printf("Nhập không hợp lệ! Điểm phải từ 0 đến 10.\n");
-                } 
-                else {
                     if (diem >= 9) {
                         printf("Xếp loại: Xuất sắc\n");
                     } else if (diem >= 8) {
@@ -46,7 +48,7 @@ int main() {
                     }
                 }
                 break;
-            }
+            
             
             case 2: {
                 printf("--- Chức năng giải phương trình bậc 2 ---\n");
@@ -136,7 +138,8 @@ int main() {
                         printf("Tiền điện: %lld đồng\n", money);
                     }
                     printf(" ");
-                } 
+                }
+                printf(" Nhap");
                 break;
             }
             
