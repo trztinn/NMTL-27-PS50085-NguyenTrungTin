@@ -2,152 +2,192 @@
 #include <windows.h>
 #include <math.h>
 
+void clear() {
+    while (getchar() != '\n');
+}
+
+// ================= 50% LOGIC NGOÀI: HÀM BỔ TRỢ =================
+// Hàm kiểm tra số nguyên tố
+int laSoNguyenTo(int n) {
+    if (n < 2) return 0;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+
+// Hàm kiểm tra số chính phương
+int laSoChinhPhuong(int n) {
+    if (n < 0) return 0;
+    int can = (int)sqrt(n);
+    return (can * can == n);
+}
+
+// Hàm tìm Ước số chung lớn nhất (sử dụng thuật toán Euclid)
+int timUCLN(int a, int b) {
+    a = abs(a);
+    b = abs(b);
+    while (b != 0) {
+        int temp = a % b;
+        a = b;
+        b = temp;
+    }
+    return a;
+}
+
+// Hàm tìm Bội số chung nhỏ nhất: BSCNN = (a * b) / UCLN
+int timBSCNN(int a, int b, int ucln) {
+    if (a == 0 || b == 0) return 0;
+    return abs(a * b) / ucln;
+}
+
+// ================= CHƯƠNG TRÌNH CHÍNH =================
 int main() {
-    SetConsoleOutputCP(65001);
+    SetConsoleOutputCP(65001); // Hỗ trợ tiếng Việt Console
     
     int choice;
     
     do {
         printf("\n=====================================\n");
-        printf("         MENU CHUONG TRINH LAB 3      \n");
+        printf("        MENU CHƯƠNG TRÌNH LAB        \n");
         printf("=====================================\n");
-        printf("1. Chức năng học lực sinh viên\n");
-        printf("2. Chức năng giải phương trình bậc 2\n");
-        printf("3. Chức năng tính tiền điện tiêu thụ hàng tháng\n");
-        printf("4. Thoát chương trình\n");
+        printf("1.  Chức năng 1: Kiểm tra số nguyên\n");
+        printf("2.  Chức năng 2: Tìm ƯSCLN và BSCNN\n");
+        printf("3.  Chức năng 3: Tính tiền Karaoke\n");
+        printf("4.  Chức năng 4: Tính tiền điện\n");
+        printf("5.  Chức năng 5: Đổi tiền\n");
+        printf("6.  Chức năng 6: Tính lãi suất vay ngân hàng\n");
+        printf("7.  Chức năng 7: Vay tiền mua xe\n");
+        printf("8.  Chức năng 8: Sắp xếp thông tin sinh viên\n");
+        printf("9.  Chức năng 9: Game Lott (FPOLY-LOTT)\n");
+        printf("10. Chức năng 10: Tính toán phân số\n");
+        printf("11. Thoát chương trình\n");
         printf("-------------------------------------\n");
         
-        printf("Nhap lua chon cua ban (1-4): ");
+        printf("Nhập lựa chọn của bạn (1-11): ");
         if (scanf("%d", &choice) != 1) {
-            while (getchar() != '\n'); // Xóa đệm nếu nhập chữ ở menu
-            choice = 0; // Đưa về mặc định để nhảy vào default
-        
+            choice = -1;
         }
-        while (getchar() != '\n'); 
-        printf("\n"); 
+        clear();
         
         switch (choice) {
-            case 1: { 
-                printf("--- Chức năng học lực sinh viên ---\n");
-                float diem;
-                
-                printf("Nhập vào điểm của sinh viên (0 - 10): ");
-                // Nhập và kiểm tra dữ liệu hợp lệ
-                while (scanf("%f", &diem) != 1 || diem < 0 || diem > 10) {
-                    while (getchar() != '\n'); // Xóa đệm dư thừa/chữ lỗi
-                    printf("Không hợp lệ! Điểm phải từ 0 đến 10.\n");
-                    printf("Nhập lại điểm: ");
+            // ----- CHỨC NĂNG 1 -----
+            case 1: {
+                printf("\n--- Chức năng 1: Kiểm tra số nguyên ---\n");
+                float x;
+                char check;
+                printf("Nhập vào số x: ");
+
+                while (scanf("%f%c", &x, &check) != 2 || check != '\n') {
+                    clear();
+                    printf("Dữ liệu không hợp lệ! Vui lòng nhập lại số x: ");
                 }
-                while (getchar() != '\n'); // Dọn đệm sau khi nhập điểm thành công
-                
-                // Xếp loại học lực
-                if (diem >= 9) {
-                    printf("Xếp loại: Xuất sắc\n");
-                } else if (diem >= 8) {
-                    printf("Xếp loại: Giỏi\n");
-                } else if (diem >= 6.5) {
-                    printf("Xếp loại: Khá\n");
-                } else if (diem >= 5) {
-                    printf("Xếp loại: Trung bình\n");
-                } else {
-                    printf("Xếp loại: Yếu\n");
-                }
-                break;
-            }
-            
-            case 2: {
-                printf("--- Chức năng giải phương trình bậc 2 ---\n");
-                float a, b, c;
-                
-                printf("nhap a: ");
-                while (scanf("%f", &a) != 1) { while (getchar() != '\n'); printf("Nhập lại a: "); }
-                printf("nhap b: ");
-                while (scanf("%f", &b) != 1) { while (getchar() != '\n'); printf("Nhập lại b: "); }
-                printf("nhap c: ");
-                while (scanf("%f", &c) != 1) { while (getchar() != '\n'); printf("Nhập lại c: "); }
-                while (getchar() != '\n');
-                
-                printf("\nPhương trình: %.1fx^2 + %.1fx + %.1f = 0\n", a, b, c);
-                
-                if (a == 0) {
-                    if (b == 0) {
-                        if (c == 0) {
-                            printf("pt vô số nghiệm.\n");
-                        } else {
-                            printf("pt vô nghiệm.\n");
-                        }
+
+                if (x == (int)x) {
+                    int n = (int)x;
+                    printf("=> %.2f LÀ số nguyên.\n", x);
+
+                    if (laSoNguyenTo(n)) {
+                        printf("=> %d LÀ số nguyên tố.\n", n);
                     } else {
-                        float x = -c / b;
-                        printf("Nghiệm x = %.1f\n", x);
+                        printf("=> %d KHÔNG PHẢI là số nguyên tố.\n", n);
                     }
-                } 
-                else {
-                    float Delta = b * b - 4 * a * c;
-                    
-                    if (Delta < 0) {
-                        printf("Pt vô nghiệm\n");
-                    } 
-                    else if (Delta == 0) {
-                        float x = -b / (2 * a);
-                        printf("pt có nghiệm kép x1 = x2 = %.1f\n", x);
-                    } 
-                    else {
-                        float x1 = (-b + sqrt(Delta)) / (2 * a);
-                        float x2 = (-b - sqrt(Delta)) / (2 * a);
-                        printf("Pt có 2 nghiệm phân biệt:\n");
-                        printf("x1 = %.1f\n", x1);
-                        printf("x2 = %.1f\n", x2);
+
+                    if (laSoChinhPhuong(n)) {
+                        printf("=> %d LÀ số chính phương.\n", n);
+                    } else {
+                        printf("=> %d KHÔNG PHẢI là số chính phương.\n", n);
                     }
-                }          
-                break;
-            }
-            
-            case 3: {
-                printf("--- Chức năng tính tiền điện tiêu thụ hàng tháng ---\n");
-                int kwh;
-                printf("Nhap so kWh tieu thu: ");
-                while (scanf("%d", &kwh) != 1 || kwh < 0) {
-                    while (getchar() != '\n');
-                    printf("Số kWh không hợp lệ! Nhập lại: ");
+
+                } else {
+                    printf("=> %.2f KHÔNG PHẢI là số nguyên.\n", x);
                 }
-                while (getchar() != '\n');
                 
-                if (kwh <= 50) {
-                    long long money = 1678LL * kwh;
-                    printf("Tiền điện: %lld đồng\n", money);
-                }
-                else if (kwh <= 100) {
-                    long long money = 1678LL * 50 + (kwh - 50) * 1734LL;
-                    printf("Tiền điện: %lld đồng\n", money);
-                }
-                else if (kwh <= 200) {
-                    long long money = 1678LL * 50 + 1734LL * 50 + (kwh - 100) * 2014LL;
-                    printf("Tiền điện: %lld đồng\n", money);
-                }
-                else if (kwh <= 300) {
-                    long long money = 1678LL * 50 + 1734LL * 50 + 2014LL * 100 + (kwh - 200) * 2536LL;
-                    printf("Tiền điện: %lld đồng\n", money);
-                }
-                else if (kwh <= 400) {
-                    long long money = 1678LL * 50 + 1734LL * 50 + 2014LL * 100 + 2536LL * 100 + (kwh - 300) * 2834LL;
-                    printf("Tiền điện: %lld đồng\n", money);
-                }
-                else {
-                    long long money = 1678LL * 50 + 1734LL * 50 + 2014LL * 100 + 2536LL * 100 + 2834LL * 100 + (kwh - 400) * 2927LL;
-                    printf("Tiền điện: %lld đồng\n", money);
-                }
                 break;
             }
             
+            // ----- CHỨC NĂNG 2 -----
+            case 2: {
+                printf("\n--- Chức năng 2: Tìm ƯSCLN và BSCNN ---\n");
+                int x, y;
+                char check1, check2;
+
+                // Nhập x (bắt lỗi nếu nhập chữ hoặc số thực)
+                printf("Nhập số nguyên x: ");
+                while (scanf("%d%c", &x, &check1) != 2 || check1 != '\n') {
+                    clear();
+                    printf("Dữ liệu không hợp lệ! Vui lòng nhập lại x: ");
+                }
+
+                // Nhập y (bắt lỗi nếu nhập chữ hoặc số thực)
+                printf("Nhập số nguyên y: ");
+                while (scanf("%d%c", &y, &check2) != 2 || check2 != '\n') {
+                    clear();
+                    printf("Dữ liệu không hợp lệ! Vui lòng nhập lại y: ");
+                }
+
+                int ucln = timUCLN(x, y);
+                int bscnn = timBSCNN(x, y, ucln);
+
+                printf("=> Ước số chung lớn nhất (ƯCLN) của %d và %d là: %d\n", x, y, ucln);
+                if (bscnn == 0) {
+                    printf("=> Không có Bội số chung nhỏ nhất (BSCNN) vì có số bằng 0.\n");
+                } else {
+                    printf("=> Bội số chung nhỏ nhất (BSCNN) của %d và %d là: %d\n", x, y, bscnn);
+                }
+
+                break;
+            }
+                
+            case 3:
+                printf("\n--- Chức năng 3: Tính tiền Karaoke ---\n");
+                // TODO: Thêm code xử lý chức năng 3 tại đây
+                break;
+
             case 4:
-                printf("Cảm ơn bạn đã sử dụng chương trình. Thoát hẳn!\n");
+                printf("\n--- Chức năng 4: Tính tiền điện ---\n");
+                // TODO: Thêm code xử lý chức năng 4 tại đây
+                break;
+            
+            case 5:
+                printf("\n--- Chức năng 5: Đổi tiền ---\n");
+                // TODO: Thêm code xử lý chức năng 5 tại đây
+                break;
+                
+            case 6:
+                printf("\n--- Chức năng 6: Tính lãi suất vay ngân hàng ---\n");
+                // TODO: Thêm code xử lý chức năng 6 tại đây
+                break;
+
+            case 7:
+                printf("\n--- Chức năng 7: Vay tiền mua xe ---\n");
+                // TODO: Thêm code xử lý chức năng 7 tại đây
+                break;
+            
+            case 8:
+                printf("\n--- Chức năng 8: Sắp xếp thông tin sinh viên ---\n");
+                // TODO: Thêm code xử lý chức năng 8 tại đây
+                break;
+                
+            case 9:
+                printf("\n--- Chức năng 9: Game Lott ---\n");
+                // TODO: Thêm code xử lý chức năng 9 tại đây
+                break;
+
+            case 10:
+                printf("\n--- Chức năng 10: Tính toán phân số ---\n");
+                // TODO: Thêm code xử lý chức năng 10 tại đây
+                break;
+
+            case 11:
+                printf("\nĐã thoát chương trình! Tạm biệt.\n");
                 break;
                 
             default:
-                printf("Lựa chọn không hợp lệ! Vui lòng chọn lại từ 1 đến 4.\n");
+                printf("\nLựa chọn không hợp lệ! Vui lòng chọn lại từ 1 đến 11.\n");
         }
         
-    } while (choice != 4); 
+    } while (choice != 11); 
     
     return 0;
 }
