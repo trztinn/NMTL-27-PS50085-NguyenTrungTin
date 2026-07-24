@@ -52,8 +52,8 @@ int main() {
                 }
                 printf("Tổng: %d\n", sum);
                 printf("Đếm số: %d\n", count);
-                int tbc = sum / count;
-                printf("Trung bình cộng: %d\n", tbc);
+                float tbc = (float)sum / count;
+                printf("Trung bình cộng: %.1f\n", tbc);
                 break;
             }
             case 2:{
@@ -98,6 +98,12 @@ int main() {
                 int a;
                 printf("Nhập số nguyên: ");
                 scanf("%d", &a);
+                if (a < 0)
+                {
+                    printf("Đây không phải là số chính phương ");
+                    break;
+                }
+                
                 int bac2 = sqrt(a);
                 if ( bac2 * bac2 == a)
                 {
