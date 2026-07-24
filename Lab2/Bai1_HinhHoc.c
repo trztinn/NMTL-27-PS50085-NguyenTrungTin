@@ -24,12 +24,12 @@ int main() {
     printf("--- TINH TOAN HINH TRON ---\n");
     printf("Nhap ban kinh hinh tron: ");
     scanf("%f", &banKinh);
-
+    
     float chuViTron = 2 * PI * banKinh;
     float dienTichTron = PI * banKinh * banKinh;
 
     printf("Chu vi Hinh Tron: %.2f\n", chuViTron);
     printf("Dien tich Hinh Tron: %.2f\n", dienTichTron);
-
+    
     return 0;
 }
