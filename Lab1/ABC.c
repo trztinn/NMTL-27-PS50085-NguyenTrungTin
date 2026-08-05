@@ -1,18 +1,5 @@
 #include <stdio.h>
 int main() {
-    // int kwh;
-    // float tienDien;
-    // printf("Nhap so kWh tieu thu: ");
-    // scanf("%d", &kwh);
-    // if (kwh <= 50) {
-    //     tienDien = kwh * 1.678;
-    // } else if (kwh <= 100) {
-    //     tienDien = 50 * 1.678 + (kwh - 50) * 1.734;
-    // } else {
-    //     tienDien = 50 * 1.678 + 50 * 1.734 + (kwh - 100) * 2.014;
-    // }
-    // printf("So tien dien phai tra: %.3f VND\n", tienDien);
-
     // int count = 0;
     // for (int i = 0; i < 3; i++) {
     // for (int j = 0; j < 3; j++) {
